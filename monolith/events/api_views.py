@@ -190,7 +190,7 @@ def api_list_states(request):
 
     for state in states:
         dict = {}
-        dict["state"] = state.name
+        dict["name"] = state.name
         dict["abbreviation"] = state.abbreviation
         state_list.append(dict)
     return JsonResponse({"states": state_list})
