@@ -1,27 +1,40 @@
-function createCard(name, description, pictureUrl) {
+function createCard(name, description, pictureUrl, start, end, location) {
     return `
       <div>
       <div class="shadow p-3 mb-5 bg-body rounded">
         <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">${name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${location}</h6>
           <p class="card-text">${description}</p>
+          <div class="card-footer">${start}-${end}</div>
+          
         </div>
-        <div id="footer">${date}</div>
         </div>
       </div>
     `;
 }
 
+function showError() {
+    return `
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> CHECK YOUR URLs.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  `;
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
 
-    const url = 'http://localhost:8000/api/conferences/';
+    const url = 'http://localhost:8000/api/conferences/dfghhdfgh';
 
     try {
         const response = await fetch(url);
 
         if (!response.ok) {
-            // Figure out what to do when the response is bad
+            const alertHtml = showError();
+            const alert = document.querySelector('.row');
+            alert.innerHTML += alertHtml;
         } else {
             const data = await response.json();
 
@@ -34,9 +47,11 @@ window.addEventListener('DOMContentLoaded', async () => {
                     const name = details.conference.name;
                     const description = details.conference.description;
                     const pictureUrl = details.conference.location.picture_url;
-                    const date = details.conference.starts
-                    console.log(date)
-                    const html = createCard(name, description, pictureUrl, date);
+                    const start = new Date(details.conference.starts).toDateString()
+                    const end = new Date(details.conference.ends).toDateString()
+                    const location = details.conference.location.name
+                    console.log(location)
+                    const html = createCard(name, description, pictureUrl, start, end, location);
 
                     const column = document.querySelector('.row');
                     column.innerHTML += html;
