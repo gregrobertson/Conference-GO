@@ -1,7 +1,7 @@
 function createCard(name, description, pictureUrl, start, end, location) {
     return `
       <div>
-      <div class="shadow p-3 mb-5 bg-body rounded">
+      <div class=" card shadow p-3 mb-5 bg-body rounded">
         <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">${name}</h5>
@@ -26,7 +26,7 @@ function showError() {
 
 window.addEventListener('DOMContentLoaded', async () => {
 
-    const url = 'http://localhost:8000/api/conferences/dfghhdfgh';
+    const url = 'http://localhost:8000/api/conferences/';
 
     try {
         const response = await fetch(url);
