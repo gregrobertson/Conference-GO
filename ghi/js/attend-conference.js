@@ -4,6 +4,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     const selectTag = document.getElementById('conference');
     const loadingTag = document.getElementById('loading-conference-spinner');
     const formTag = document.getElementById('create-attendee-form')
+    const successTag = document.getElementById('success-message')
+
 
     const url = 'http://localhost:8000/api/conferences/';
     const response = await fetch(url);
@@ -19,8 +21,6 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
 
         loadingTag.classList.add("d-none")
-        // selectTag.classList.remove("loading-conference-spinner")
-
         selectTag.classList.remove("d-none")
 
         formTag.addEventListener('submit', async event => {
@@ -41,6 +41,9 @@ window.addEventListener('DOMContentLoaded', async () => {
                 formTag.reset();
                 const newAttendees = await response.json();
                 console.log(newAttendees);
+
+                formTag.classList.add("d-none")
+                successTag.classList.remove("d-none")
             }
 
         });
