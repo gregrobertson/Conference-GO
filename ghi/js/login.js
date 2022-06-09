@@ -3,20 +3,21 @@ window.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async event => {
         event.preventDefault();
 
-        const data = Object.fromEntries(new FormData(form))
+        // const data = Object.fromEntries(new FormData(form))
         const fetchOptions = {
             method: 'post',
             body: new FormData(form),
+            credentials: 'include',
             // headers: {
             //     'Content-Type': 'application/json',
             // }
         };
-        const navTag = document.getElementById('navbarSupportedContent')
+        // const navTag = document.getElementById('navbarSupportedContent')
         const url = 'http://localhost:8000/login/';
         const response = await fetch(url, fetchOptions);
         if (response.ok) {
             window.location.href = '/';
-            navTag.classList.remove("d-none")
+            // navTag.classList.remove("d-none")
         } else {
             console.error(response);
         }
