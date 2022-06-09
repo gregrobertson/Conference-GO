@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django_crontab",
+    "corsheaders",
     "attendees.apps.AttendeesConfig",
     "django.contrib.admin",
     "django.contrib.auth",
