@@ -16,13 +16,12 @@ if (payloadCookie) {
     // console.log(perms);
 
     const confNav = document.getElementById('new-conference')
-    // const presNav = document.getElementById('new-presentation')
+    const presNav = document.getElementById('new-presentation')
     const locNav = document.getElementById('new-location')
-    // console.log();
+    console.log(perms);
     // Check if "events.add_conference" is in the permissions.
     // If it is, remove 'd-none' from the link
     if (perms.includes("events.add_conference")) {
-
         confNav.classList.remove("d-none")
     }
 
@@ -31,6 +30,10 @@ if (payloadCookie) {
 
     }
 
+    if (perms.includes("presentations.add_presentation")) {
+        presNav.classList.remove("d-none")
+
+    }
 
 
     // Check if "events.add_location" is in the permissions.

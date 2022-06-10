@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         const selectTag = document.getElementById('state')
 
+
         for (let state of data.states) {
             const option = document.createElement('option')
             option.value = state.abbreviation

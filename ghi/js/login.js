@@ -12,12 +12,12 @@ window.addEventListener('DOMContentLoaded', () => {
             //     'Content-Type': 'application/json',
             // }
         };
-        // const navTag = document.getElementById('navbarSupportedContent')
+
         const url = 'http://localhost:8000/login/';
         const response = await fetch(url, fetchOptions);
         if (response.ok) {
             window.location.href = '/';
-            // navTag.classList.remove("d-none")
+
         } else {
             console.error(response);
         }
