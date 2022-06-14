@@ -1,23 +1,47 @@
+
 import React from "react";
 
 class LocationForm extends React.Component {
     constructor(props) {
         super(props)
+        // Setting Deafualt Value for each inout field in form -------------->
         this.state = {
             name: '',
             roomCount: '',
             city: '',
             states: []
         }
+        //-------------------------------------------------------------------->
         this.handleNameChange = this.handleNameChange.bind(this)
         this.handleCityChange = this.handleCityChange.bind(this)
         this.handleRoomCountChange = this.handleRoomCountChange.bind(this)
         this.handleStateChange = this.handleStateChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+
     }
+    //Updating the component state with what you type/input into the form--->
+    handleNameChange(event) {
+        const value = event.target.value;
+        this.setState({ name: value })
+    }
+    handleCityChange(event) {
+        const value = event.target.value;
+        this.setState({ city: value })
+    }
+    handleRoomCountChange(event) {
+        const value = event.target.value;
+        this.setState({ roomCount: value })
+    }
+    handleStateChange(event) {
+        const value = event.target.value;
+        this.setState({ state: value })
+    }
+    //----------------------------------------------------------------------->
+    //--Handling how the form is submitted----------------------------------->
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
+        /* Changing the format so that the request to the server matches what the server recieves */
         data.room_count = data.roomCount;
         delete data.roomCount;
         delete data.states;
@@ -46,22 +70,6 @@ class LocationForm extends React.Component {
             this.setState(cleared)
             //----------------------------------------------------->
         }
-    }
-    handleNameChange(event) {
-        const value = event.target.value;
-        this.setState({ name: value })
-    }
-    handleCityChange(event) {
-        const value = event.target.value;
-        this.setState({ city: value })
-    }
-    handleRoomCountChange(event) {
-        const value = event.target.value;
-        this.setState({ roomCount: value })
-    }
-    handleStateChange(event) {
-        const value = event.target.value;
-        this.setState({ state: value })
     }
 
     async componentDidMount() {

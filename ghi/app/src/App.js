@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './Nav';
 import LocationForm from './LocationForm';
+import ConferenceForm from './ConferenceForm';
 // import AttendeesList from './AttendeesList';
 
 function App(props) {
@@ -11,7 +12,8 @@ function App(props) {
     <React.Fragment>
       <Nav />
       <div className="container-fluid">
-        <LocationForm />
+        <ConferenceForm />
+        {/* <LocationForm /> */}
         {/* <AttendeesList attendees={props.attendees} /> */}
       </div>
     </React.Fragment>
